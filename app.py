@@ -15,7 +15,7 @@ def create_app(test_config=None):
     def root():
         return "Hi there - this is my final Udacity Nanodegree project."
         
-
+    # get movies
     @app.route('/movies', methods=['GET'])
     @requires_auth('get:movies')
     def get_movies(payload):
