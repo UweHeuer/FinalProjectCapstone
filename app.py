@@ -170,7 +170,7 @@ def create_app(test_config=None):
             if 'age' in actor_data:
                 actor.age = actor_data['age']
             if 'gender' in actor_data:
-                actor.age = actor_data['gender']
+                actor.gender = actor_data['gender']
 
             actor.update()
 
