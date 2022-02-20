@@ -3,7 +3,7 @@ import json
 import os
 from app import create_app
 
-from models import setup_db, Movie
+from models import setup_db, Movie, Actor
 
 class CapstoneTestCase(unittest.TestCase):
 
@@ -164,7 +164,156 @@ class CapstoneTestCase(unittest.TestCase):
         # clean up
         test_movie.delete() 
 
-        
+
+    def test_get_actors_success(self):
+        res = self.client().get(
+            'actors',
+            headers = {
+                'Authorization': 'Bearer ' + self.token_executive_producer
+            }
+        )
+        data = json.loads(res.data)
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(data['success'], True)
+        self.assertTrue('actors' in data)        
+
+
+    def test_get_actors_invalid_token(self):
+        res = self.client().get(
+            'actors',
+            headers = {
+                'Authorization': 'Bearer ' + 'uhgcfg'
+            }
+        )
+        self.assertEqual(res.status_code, 401)
+
+
+    def test_post_actor_missing_token(self):
+        new_actor_json = {
+            'name': 'actor test name', 
+            'gender': 'M',
+            'age': '22'
+        }
+        res = self.client().post('/actors', json = new_actor_json)
+        self.assertEqual(res.status_code, 401)
+
+
+    def test_post_actor_success(self):
+        new_actor_json = {
+            'name': 'actor test name', 
+            'gender': 'M',
+            'age': '22'
+        }
+        res = self.client().post(
+            '/actors', 
+            headers = {
+                'Authorization': 'Bearer ' + self.token_executive_producer
+            },
+            json = new_actor_json
+        )
+        self.assertEqual(res.status_code, 200)
+
+
+    def test_update_actor_success(self):
+        # create actor for testing
+        test_actor = Actor(name = 'test for update', gender = 'F', age = '2')
+        test_actor.insert()
+
+        update_actor_json = {
+            'name': 'patched name',
+            'gender': 'M',
+            'age': '22'
+        }
+
+        res = self.client().patch(
+            '/actors/{}'.format(test_actor.id),
+            headers = {
+                'Authorization': 'Bearer ' + self.token_executive_producer
+            },  
+           json = update_actor_json,                     
+        )
+
+        self.assertEqual(res.status_code, 200)
+
+        # clean up
+        test_actor.delete()
+
+
+    def test_update_actor_wrong_id(self):
+
+        update_actor_json = {
+            'name': 'patched name',
+            'gender': 'M',
+            'age': '22'
+        }
+
+        res = self.client().patch(
+            '/actors/{}'.format(99999),
+            headers = {
+                'Authorization': 'Bearer ' + self.token_executive_producer
+            },  
+           json = update_actor_json,                     
+        )              
+
+        self.assertEqual(res.status_code, 404)  
+
+
+    def test_update_actor_missing_rights(self):
+        # create actor for testing
+        test_actor = Actor(name = 'test for update', gender = 'F', age = '2')
+        test_actor.insert()   
+
+        update_actor_json = {
+            'name': 'patched name',
+            'gender': 'M',
+            'age': '22'
+        }
+
+        res = self.client().patch(
+            '/actors/{}'.format(test_actor.id),
+            headers = {
+                'Authorization': 'Bearer ' + self.token_casting_assistant
+            },  
+           json = update_actor_json,                     
+        )
+
+        self.assertEqual(res.status_code, 401)
+
+        # clean up
+        test_actor.delete()        
+
+
+    def test_delete_actor_success(self):
+        # create actor for testing
+        test_actor = Actor(name = 'test for update', gender = 'F', age = '2')
+        test_actor.insert()      
+
+        res = self.client().delete(
+            '/actors/{}'.format(test_actor.id),
+            headers = {
+                'Authorization': 'Bearer ' + self.token_executive_producer
+            }                  
+        )
+
+        self.assertEqual(res.status_code, 200)    
+
+
+    def test_delete_actor_missing_rights(self):
+        # create actor for testing
+        test_actor = Actor(name = 'test for update', gender = 'F', age = '2')
+        test_actor.insert()      
+
+        res = self.client().delete(
+            '/actors/{}'.format(test_actor.id),
+            headers = {
+                'Authorization': 'Bearer ' + self.token_casting_assistant
+            }                  
+        )
+
+        self.assertEqual(res.status_code, 401)
+
+        # clean up
+        test_actor.delete()        
 
 if __name__ == "__main__":
     unittest.main()

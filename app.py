@@ -1,7 +1,7 @@
 import json
 import os
 from flask import Flask, jsonify, request, abort
-from models import Movie, setup_db
+from models import Movie, Actor, setup_db
 from flask_cors import CORS
 
 from auth import AuthError, requires_auth
@@ -15,7 +15,19 @@ def create_app(test_config=None):
     @app.route('/')
     def root():
         return "Hi there - this is my final Udacity Nanodegree project!"
+
+    @app.route('/login')
+    def login():
+        return "You proabably have been redirected here because you loogged on via the Auth0 code flow"
+
+    @app.route('/logout')
+    def logout():
+        return "You proabably have been redirected here because you loogged out via the Auth0 code flow"
         
+    #
+    # define endpoints for movies
+    #
+
     # get movies
     @app.route('/movies', methods = ['GET'])
     @requires_auth('get:movies')
@@ -101,7 +113,97 @@ def create_app(test_config=None):
             # something went wrong => return internal error
             abort(500) 
 
-            
+    #
+    # define endpoints for actors
+    #
+
+    # get actors
+    @app.route('/actors', methods = ['GET'])
+    @requires_auth('get:actors')
+    def get_actors(payload):
+        try:
+            actors = Actor.query.all()
+            return jsonify({
+                'success': True,
+                'actors': [actor.format() for actor in actors]
+            }), 200
+        except:
+            # something went wrong => return internal error
+            abort(500)            
+
+
+    # create actor
+    @app.route('/actors', methods = ['POST'])
+    @requires_auth('post:actors')    
+    def post_actors(payload):
+        actor_data = request.get_json()
+        if 'name' and 'age' and 'gender' not in actor_data:
+            # bad request
+            abort(400)
+        try:
+            new_actor = Actor(name = actor_data['name'], age = actor_data['age'], gender = actor_data['gender'])
+            new_actor.insert()
+
+            return jsonify({
+                'success': True,
+                'actor_id': new_actor.id
+            })
+        except:
+            # something went wrong => return internal error
+            abort(500)
+
+
+    # update actor
+    @app.route('/actors/<int:id>', methods = ['PATCH'])
+    @requires_auth('patch:actors')
+    def patch_actors(payload, id):
+
+        actor = Actor.query.get(id)
+        if actor is None:
+            # not found
+            abort(404)
+
+        try:
+            actor_data = request.get_json()
+            if 'name' in actor_data:
+                actor.name = actor_data['name']
+            if 'age' in actor_data:
+                actor.age = actor_data['age']
+            if 'gender' in actor_data:
+                actor.age = actor_data['gender']
+
+            actor.update()
+
+            return jsonify({
+                'success': True,
+                'actor_id': actor.id
+            }), 200
+
+        except:
+            # something went wrong => return internal error
+            abort(500)            
+
+
+    @app.route('/actors/<int:id>', methods = ['DELETE'])
+    @requires_auth('delete:actors')
+    def delete_actors(payload, id):
+
+        actor = Actor.query.get(id)
+        if actor is None:
+            # not found
+            abort(404)
+
+        try:
+            actor.delete()    
+            return jsonify({
+                'success': True,
+                'actor_id': id
+            }), 200       
+
+        except:         
+            # something went wrong => return internal error
+            abort(500) 
+
     #
     # define error handling
     #
