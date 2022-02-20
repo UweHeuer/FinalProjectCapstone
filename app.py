@@ -13,7 +13,7 @@ def create_app(test_config=None):
 
     @app.route('/')
     def root():
-        return "Hi there - this is my final Udacity Nanodegree project."
+        return "Hi there - this is my final Udacity Nanodegree project!"
         
     # get movies
     @app.route('/movies', methods=['GET'])
