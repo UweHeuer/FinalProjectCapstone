@@ -70,6 +70,8 @@ def check_permissions(permission, payload):
     - returns True if everything is ok
     '''
 
+    # print("Permissions of payload are " + str(payload['permissions']))
+
     if 'permissions' not in payload:
         raise AuthError({
             'code': 'invalid_payload',
