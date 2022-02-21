@@ -10,7 +10,15 @@ The main technologies are:
 - SQLAlchemy and Flask Alchemy
 - PostGreSQL
 
-The detailed dependencies are listed in 'requirement.txt'.
+The detailed dependencies are listed in `requirement.txt`.
+
+# Getting Started
+It is recommended to use a virtual environment to avoid conflicts with existing installations. The listed commands are for a Linux environment:
+
+```
+python -m venv venv
+source ./venv/bin/activate
+
 
 # Hosting
 
