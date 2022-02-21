@@ -62,6 +62,29 @@ flask run --reload
 There is a running application on the Heroku platform which can be accessed by https://uweheuer-capstone.herokuapp.com/. The `Procfile` defines the web dyno.
 
 # Role Base Access Control
+The roles from the specifications have been implemented via Auth0. The roles and permissions are:
+* Casting Assistant
+  * get:actors
+  * get:movies
+* Casting Director
+  * get:actors
+  * get:movies
+  * patch:actors
+  * patch:movies
+  * post:actors
+  * delete:actors
+* Executive Producer
+  * get:actors
+  * get:movies
+  * patch:actors
+  * patch:movies
+  * post:actors
+  * post:movies 
+  * delete:actors
+  * delete:movies
+
+The authorization code flow for the Heroku hosted app is https://uweheuer.eu.auth0.com/authorize?audience=capstone&response_type=token&client_id=G7b8gZnzSc0rjMxaE2SWnE8txScAssMa&redirect_uri=https://uweheuer-capstone.herokuapp.com/login and 
+follows the standard scheme https://Template:YOUR DOMAIN/authorize?audience=Template:API IDENTIFIER&response_type=token&client_id=Template:YOUR CLIENT ID&redirect_uri=Template:YOUR CALLBACK URI.
 
 # Testing
 
