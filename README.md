@@ -114,6 +114,9 @@ Errors or missing access rights are returned via a standard JSON object with a s
 ```
 ## Endpoints
 
+### GET '/movies'
+
+
 
 
 
