@@ -115,6 +115,7 @@ Errors or missing access rights are returned via a standard JSON object with a s
 ## Endpoints
 
 ### GET '/movies'
+* no parameter
 * return a list of all movies
 * response example
 ```
@@ -125,12 +126,56 @@ Errors or missing access rights are returned via a standard JSON object with a s
             "release_date": "22.02.2022",
             "title": "movie title 1"
         },
-				...
+        ...
     ],
     "success": true
 }
 ```
 
+### POST '/movies'
+* requires a JSON body e.g.
+```
+{
+    "title": "movie title 1",
+    "release_date": "22.02.2022"
+}
+```
+* creates a new movie
+* in case of success returns the id of the new movie e.g.
+```
+{
+    "movie_id": 4,
+    "success": true
+}
+```
+
+### PATCH '/movies/<int:id>'
+* requires a JSON body e.g.
+```
+{
+    "title": "patched title from postman",
+    "release_date": "patched release_date from postman"
+}
+```
+* updates the movie with 'id'
+* in case of success returns the id of the updated movie e.g.
+```
+{
+    "movie_id": 3,
+    "success": true
+}
+```
+
+### DELETE '/movies/<int:id>'
+* no parameter
+* deletes the movie with 'id'
+* in case of success returns the id of the deleted movie e.g.
+```
+{
+    "movie_id": 5,
+    "success": true
+}
+```
 
 
 
