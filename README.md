@@ -115,7 +115,21 @@ Errors or missing access rights are returned via a standard JSON object with a s
 ## Endpoints
 
 ### GET '/movies'
-
+* return a list of all movies
+* response example
+```
+{
+    "movies": [
+        {
+            "id": 1,
+            "release_date": "22.02.2022",
+            "title": "movie title 1"
+        },
+				...
+    ],
+    "success": true
+}
+```
 
 
 
