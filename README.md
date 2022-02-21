@@ -112,6 +112,20 @@ Errors or missing access rights are returned via a standard JSON object with a s
     "success": false
 }
 ```
+
+Standard errors codes and messages are:
+* 400 bad request
+* 401 invalid payload
+* 401 unauthorized
+* 401 invalid token
+* 401 token expired
+* 401 invalid claims
+* 401 invalid header
+* 401 wrong_authorization_header_format
+* 401 missing_bearer_in_authorization_header
+* 401 authorization_header_missing
+* 404 resource not found
+
 ## Endpoints
 
 ### GET '/movies'
@@ -150,7 +164,7 @@ Errors or missing access rights are returned via a standard JSON object with a s
 ```
 
 ### PATCH '/movies/<int:id>'
-* requires a JSON body e.g.
+* requires a JSON body with the attributes to be patched e.g.
 ```
 {
     "title": "patched title from postman",
@@ -173,6 +187,76 @@ Errors or missing access rights are returned via a standard JSON object with a s
 ```
 {
     "movie_id": 5,
+    "success": true
+}
+```
+
+### GET '/actors'
+* no parameter
+* return a list of all actors
+* response example
+```
+{
+    "actors": [
+        {
+            "age": "22",
+            "gender": "M",
+            "id": 2,
+            "name": "name of actor 2"
+        },
+        {
+            "age": "22",
+            "gender": "F",
+            "id": 4,
+            "name": "name of actor 4"
+        }
+    ],
+    "success": true
+}
+```
+
+### POST '/actors'
+* requires a JSON body e.g.
+```
+{
+    "name": "name of actor",
+    "gender": "F",
+    "age": "22"
+}
+```
+* creates a new actor
+* in case of success returns the id of the new movie e.g.
+```
+{
+    "actor_id": 5,
+    "success": true
+}
+```
+
+### PATCH '/actors/<int:id>'
+* requires a JSON body with the attributes to be patched e.g.
+```
+{
+    "name": "patched name of actor",
+    "gender": "M",
+    "age": "25"
+}
+```
+* updates the actor with 'id'
+* in case of success returns the id of the updated movie e.g.
+```
+{
+    "actor_id": 3,
+    "success": true
+}
+```
+### DELETE '/actors/<int:id>'
+* no parameter
+* deletes the actor with 'id'
+* in case of success returns the id of the deleted actor e.g.
+```
+{
+    "actor_id": 5,
     "success": true
 }
 ```
