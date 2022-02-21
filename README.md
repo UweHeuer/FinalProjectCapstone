@@ -57,7 +57,6 @@ Start the application by
 ```
 flask run --reload
 ```
-
 # Hosting at Heroku
 There is a running application on the Heroku platform which can be accessed by https://uweheuer-capstone.herokuapp.com/. The `Procfile` defines the web dyno.
 
@@ -84,9 +83,24 @@ The roles from the specifications have been implemented via Auth0. The roles and
   * delete:movies
 
 The authorization code flow for the Heroku hosted app is https://uweheuer.eu.auth0.com/authorize?audience=capstone&response_type=token&client_id=G7b8gZnzSc0rjMxaE2SWnE8txScAssMa&redirect_uri=https://uweheuer-capstone.herokuapp.com/login and 
-follows the standard scheme https://Template:YOUR DOMAIN/authorize?audience=Template:API IDENTIFIER&response_type=token&client_id=Template:YOUR CLIENT ID&redirect_uri=Template:YOUR CALLBACK URI.
+follows the standard scheme https://<AUTH0_DOMAIN>/authorize?audience=<API IDENTIFIER>&response_type=token&client_id=<CLIENT_ID>&redirect_uri=<CALLBACK_URI>.
 
 # Testing
+## Test by Automated Test Script
+Run the tests for each API and role by (tokens for testing set via `setup.sh` (see above)):
+```
+python test_app.py
+```
+## Tests by Postman
+There is a Postman export file `capstone.postman_collection.json`. It uses to global variables to be set:
+* CAPSTONE_URL
+* AUTH_TOKEN
+
+## Manual Tests
+There are 3 Auth0 test user - one for each role - to be used for manual tests:
+* Casting Assistant ca@uweheuer-capstone.herokuapp.com
+* Casting Director cd@uweheuer-capstone.herokuapp.com
+* Executive Producer ep@uweheuer-capstone.herokuapp.com
 
 # API 
 
