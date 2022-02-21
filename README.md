@@ -1,6 +1,25 @@
 # Motivation for the Project
 This project implements the Capstone Project of the Udacity Full Stack Web Developer Nanodegree program. 
-It implements the Casting Agency specifications. The Casting Agency models a company that is responsible for creating movies and managing and assigning actors to those movies. 
+It implements the Casting Agency specifications. The Casting Agency models a company that is responsible for creating movies and managing and assigning actors to those movies. The specifications are:
+
+* Models:
+  * Movies with attributes title and release date
+  * Actors with attributes name, age and gender
+* Endpoints:
+  * GET /actors and /movies
+  * DELETE /actors/ and /movies/
+  * POST /actors and /movies and
+  * PATCH /actors/ and /movies/
+* Roles:
+  * Casting Assistant
+    * Can view actors and movies
+  * Casting Director
+    * All permissions a Casting Assistant has and…
+    * Add or delete an actor from the database
+    * Modify actors or movies
+  * Executive Producer
+    * All permissions a Casting Director has and…
+    * Add or delete a movie from the database
 
 # Technology Stack
 
@@ -12,7 +31,7 @@ The main technologies are:
 - Auth0
 - Heroku
 
-The detailed dependencies are listed in `requirement.txt`.
+The detailed technical dependencies are listed in `requirement.txt`.
 
 # Getting Started
 It is recommended to use a virtual environment to avoid conflicts with existing installations (the listed commands are for a Linux environment).
