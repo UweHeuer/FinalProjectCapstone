@@ -8,8 +8,24 @@
 		{
 			"name": "/movies success",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AUTH_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "{{CAPSTONE_URL}}movies",
+					"host": [
+						"{{CAPSTONE_URL}}movies"
+					]
+				}
 			},
 			"response": []
 		},
@@ -67,7 +83,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InNoVm9pNTZ1N0FsTm5zQkJNRTEtMCJ9.eyJpc3MiOiJodHRwczovL3V3ZWhldWVyLmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MjEwMzI4ZTJjNDhkYjAwNjg1YTE5ODAiLCJhdWQiOiJjYXBzdG9uZSIsImlhdCI6MTY0NTM0NDU2MiwiZXhwIjoxNjQ1NDMwOTYyLCJhenAiOiJHN2I4Z1puelNjMHJqTXhhRTJTV25FOHR4U2NBc3NNYSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOmFjdG9ycyIsImRlbGV0ZTptb3ZpZXMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInBhdGNoOmFjdG9ycyIsInBhdGNoOm1vdmllcyIsInBvc3Q6YWN0b3JzIiwicG9zdDptb3ZpZXMiXX0.fd9mg2Z1XTQiYw6HS633cbvHdLJZzWOlYK4DdfWWsAB-hShW8E3rVgCZwg5Hy3tf3JPzWswCcjPgzZqoCwtKnr5HvJu9cownXThCRXr51mvYmjqW1FnM8WHx0zmjtks1LkvRfMjumgipZ-Usrhg88Db53-WEabx1QMYT0EiWb7VCQTzELH17ydtHe9eNqHgOjE8IIYfi8P1Z92ienOn6z3BgkNCokR5J0Ppzy6Fqrg1dowqnHX3EnQZqoeS7tB1HHeTgkgKBl6wo2wJ5GpvxOfFHL9SQNJK18aSvEO6hg1Z1d0FVZrUBZ4dMTDKmyHcguG8zm7aLnzf0gzmoVColDQ",
+							"value": "{{AUTH_TOKEN}}",
 							"type": "string"
 						}
 					]
@@ -90,12 +106,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{CAPSTONE_URL}}movies/50",
+					"raw": "{{CAPSTONE_URL}}movies/3",
 					"host": [
 						"{{CAPSTONE_URL}}movies"
 					],
 					"path": [
-						"50"
+						"3"
 					]
 				}
 			},
@@ -109,7 +125,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InNoVm9pNTZ1N0FsTm5zQkJNRTEtMCJ9.eyJpc3MiOiJodHRwczovL3V3ZWhldWVyLmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MjEwMzI4ZTJjNDhkYjAwNjg1YTE5ODAiLCJhdWQiOiJjYXBzdG9uZSIsImlhdCI6MTY0NTMxNjE1MCwiZXhwIjoxNjQ1NDAyNTUwLCJhenAiOiJHN2I4Z1puelNjMHJqTXhhRTJTV25FOHR4U2NBc3NNYSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOmFjdG9ycyIsImRlbGV0ZTptb3ZpZXMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInBhdGNoOmFjdG9ycyIsInBhdGNoOm1vdmllcyIsInBvc3Q6YWN0b3JzIiwicG9zdDptb3ZpZXMiXX0.h5lv8lTRMnkvhgtMv7t_gf6ROJGLp3_mJTLLieRVIwqZ1S2_B9HJQyPoQcTnqgZWzhnLTiGCHOXyW5iiee37wDeY2KYgQxJ1MrtOqaGd4l3INnVCJaLQjq1xWLukn3u-0oNzU5kRks7H3kYI9TKb2RsK0atniNZFzWluONP56EEExVBPG-c8H_22ljo1ok1iJl_viDuuMDATkoaw2I6w6_avOH8YWTEjt0cau3pFQx3_DenfxkzjnGd-LPsS4e0QHa_WZWYMlQJQrQSNAVaU5fTPNZu-Qm3E5IKcFMtAS83WT2c3lWB-qV7wxajuYqoMzYyECJHS8-ziVjmmaW7jGQ",
+							"value": "{{AUTH_TOKEN}}",
 							"type": "string"
 						}
 					]
@@ -136,7 +152,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InNoVm9pNTZ1N0FsTm5zQkJNRTEtMCJ9.eyJpc3MiOiJodHRwczovL3V3ZWhldWVyLmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MjEwMzI4ZTJjNDhkYjAwNjg1YTE5ODAiLCJhdWQiOiJjYXBzdG9uZSIsImlhdCI6MTY0NTM0NDU2MiwiZXhwIjoxNjQ1NDMwOTYyLCJhenAiOiJHN2I4Z1puelNjMHJqTXhhRTJTV25FOHR4U2NBc3NNYSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOmFjdG9ycyIsImRlbGV0ZTptb3ZpZXMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInBhdGNoOmFjdG9ycyIsInBhdGNoOm1vdmllcyIsInBvc3Q6YWN0b3JzIiwicG9zdDptb3ZpZXMiXX0.fd9mg2Z1XTQiYw6HS633cbvHdLJZzWOlYK4DdfWWsAB-hShW8E3rVgCZwg5Hy3tf3JPzWswCcjPgzZqoCwtKnr5HvJu9cownXThCRXr51mvYmjqW1FnM8WHx0zmjtks1LkvRfMjumgipZ-Usrhg88Db53-WEabx1QMYT0EiWb7VCQTzELH17ydtHe9eNqHgOjE8IIYfi8P1Z92ienOn6z3BgkNCokR5J0Ppzy6Fqrg1dowqnHX3EnQZqoeS7tB1HHeTgkgKBl6wo2wJ5GpvxOfFHL9SQNJK18aSvEO6hg1Z1d0FVZrUBZ4dMTDKmyHcguG8zm7aLnzf0gzmoVColDQ",
+							"value": "{{AUTH_TOKEN}}",
 							"type": "string"
 						}
 					]
@@ -166,7 +182,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InNoVm9pNTZ1N0FsTm5zQkJNRTEtMCJ9.eyJpc3MiOiJodHRwczovL3V3ZWhldWVyLmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MjEwMzI4ZTJjNDhkYjAwNjg1YTE5ODAiLCJhdWQiOiJjYXBzdG9uZSIsImlhdCI6MTY0NTM0NDU2MiwiZXhwIjoxNjQ1NDMwOTYyLCJhenAiOiJHN2I4Z1puelNjMHJqTXhhRTJTV25FOHR4U2NBc3NNYSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOmFjdG9ycyIsImRlbGV0ZTptb3ZpZXMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInBhdGNoOmFjdG9ycyIsInBhdGNoOm1vdmllcyIsInBvc3Q6YWN0b3JzIiwicG9zdDptb3ZpZXMiXX0.fd9mg2Z1XTQiYw6HS633cbvHdLJZzWOlYK4DdfWWsAB-hShW8E3rVgCZwg5Hy3tf3JPzWswCcjPgzZqoCwtKnr5HvJu9cownXThCRXr51mvYmjqW1FnM8WHx0zmjtks1LkvRfMjumgipZ-Usrhg88Db53-WEabx1QMYT0EiWb7VCQTzELH17ydtHe9eNqHgOjE8IIYfi8P1Z92ienOn6z3BgkNCokR5J0Ppzy6Fqrg1dowqnHX3EnQZqoeS7tB1HHeTgkgKBl6wo2wJ5GpvxOfFHL9SQNJK18aSvEO6hg1Z1d0FVZrUBZ4dMTDKmyHcguG8zm7aLnzf0gzmoVColDQ",
+							"value": "{{AUTH_TOKEN}}",
 							"type": "string"
 						}
 					]
@@ -206,7 +222,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InNoVm9pNTZ1N0FsTm5zQkJNRTEtMCJ9.eyJpc3MiOiJodHRwczovL3V3ZWhldWVyLmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2MjEwMzI4ZTJjNDhkYjAwNjg1YTE5ODAiLCJhdWQiOiJjYXBzdG9uZSIsImlhdCI6MTY0NTM0NDU2MiwiZXhwIjoxNjQ1NDMwOTYyLCJhenAiOiJHN2I4Z1puelNjMHJqTXhhRTJTV25FOHR4U2NBc3NNYSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOmFjdG9ycyIsImRlbGV0ZTptb3ZpZXMiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInBhdGNoOmFjdG9ycyIsInBhdGNoOm1vdmllcyIsInBvc3Q6YWN0b3JzIiwicG9zdDptb3ZpZXMiXX0.fd9mg2Z1XTQiYw6HS633cbvHdLJZzWOlYK4DdfWWsAB-hShW8E3rVgCZwg5Hy3tf3JPzWswCcjPgzZqoCwtKnr5HvJu9cownXThCRXr51mvYmjqW1FnM8WHx0zmjtks1LkvRfMjumgipZ-Usrhg88Db53-WEabx1QMYT0EiWb7VCQTzELH17ydtHe9eNqHgOjE8IIYfi8P1Z92ienOn6z3BgkNCokR5J0Ppzy6Fqrg1dowqnHX3EnQZqoeS7tB1HHeTgkgKBl6wo2wJ5GpvxOfFHL9SQNJK18aSvEO6hg1Z1d0FVZrUBZ4dMTDKmyHcguG8zm7aLnzf0gzmoVColDQ",
+							"value": "{{AUTH_TOKEN}}",
 							"type": "string"
 						}
 					]
@@ -221,7 +237,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"name\": \"patched name of actor\",\r\n\t\"gender\": \"G\",\r\n    \"age\": \"25\"\r\n}"
+					"raw": "{\r\n\t\"name\": \"patched name of actor\",\r\n\t\"gender\": \"M\",\r\n    \"age\": \"25\"\r\n}"
 				},
 				"url": {
 					"raw": "{{CAPSTONE_URL}}actors/1",
@@ -238,15 +254,31 @@
 		{
 			"name": "/actors success",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AUTH_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "{{CAPSTONE_URL}}actors/1",
+					"raw": "{{CAPSTONE_URL}}actors/3",
 					"host": [
 						"{{CAPSTONE_URL}}actors"
 					],
 					"path": [
-						"1"
+						"3"
 					]
 				}
 			},
