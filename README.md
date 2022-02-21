@@ -102,6 +102,18 @@ There are 3 Auth0 test user - one for each role - to be used for manual tests:
 * Casting Director cd@uweheuer-capstone.herokuapp.com
 * Executive Producer ep@uweheuer-capstone.herokuapp.com
 
-# API 
+# API Reference
+## Error Handling
+Errors or missing access rights are returned via a standard JSON object with a standard format e.g.
+```
+{
+    "error": 401,
+    "message": "token is invalid",
+    "success": false
+}
+```
+## Endpoints
+
+
 
 
